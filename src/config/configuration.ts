@@ -15,6 +15,10 @@ export const config = () => ({
     db: parseInt(process.env.REDIS_DB || '0', 10),
     apiCacheTTL: parseInt(process.env.REDIS_API_CACHE_TTL || '60', 10),
   },
+  transactionsApi: {
+    baseUrl:
+      process.env.TRANSACTIONS_API_URL || 'http://host.docker.internal:3000',
+  },
 });
 
 export type AppConfig = ReturnType<typeof config>;

@@ -11,7 +11,9 @@ export const getDataSourceOptions = (
     url: connectionString,
     synchronize: true, // TODO for dynamic index creation, should be disabled in prod
     entities: ['dist/**/*.entity{.ts,.js}'],
+    migrations: ['dist/migrations/*{.ts,.js}'],
     directConnection: true,
+    migrationsRun: true,
   };
 };
 

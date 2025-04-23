@@ -7,8 +7,8 @@ import helmet from '@fastify/helmet';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { ConsoleLogger } from '@nestjs/common';
-import { ResponseInterceptor } from './commons/response';
 import { AllExceptionFilter } from './commons/filters/all-exception.filter';
+import { ResponseInterceptor } from './commons/response';
 
 const setupSwagger = (app: NestFastifyApplication): void => {
   const config = new DocumentBuilder()
@@ -29,8 +29,8 @@ async function bootstrap() {
   await app.register(helmet);
   app.enableCors();
   setupSwagger(app);
-  app.useGlobalInterceptors(new ResponseInterceptor());
   app.useGlobalFilters(new AllExceptionFilter());
+  app.useGlobalInterceptors(new ResponseInterceptor());
   await app.listen(process.env.PORT ?? 3000, '0.0.0.0');
 }
 bootstrap();

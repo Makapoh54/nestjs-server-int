@@ -4,8 +4,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { UsersModule } from './modules/users/users.module';
 import { configuration, getDataSourceOptions } from './config';
+import { TransactionsRemoteModule } from './modules/transactions-remote/transactions.module';
+import { TransactionsLocalModule } from './modules/transactions-local/transactions-local.module';
 
 @Module({
   imports: [
@@ -31,7 +32,8 @@ import { configuration, getDataSourceOptions } from './config';
       },
       inject: [ConfigService],
     }),
-    UsersModule,
+    TransactionsRemoteModule,
+    TransactionsLocalModule,
   ],
   controllers: [AppController],
   providers: [AppService],

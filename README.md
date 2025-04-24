@@ -3,6 +3,7 @@ To run execute docker compose up -d, open http://127.0.0.1:3000/api#/
 
 ## Api
 transaction-remote is mock of remote transactions service, it is filled by migrations with random transactions
+
 transactions-local is local service, which syncs transactions from remote using date cursor and cron schedule. It exposes two apis which allows to retrieve per user balance and total payouts
 
 ## Unfinished
